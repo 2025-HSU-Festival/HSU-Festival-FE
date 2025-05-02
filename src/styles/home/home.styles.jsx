@@ -21,6 +21,36 @@ export const MainContentContainer = styled.div`
   padding: 20px;
 `;
 
+export const ChatbotButton = styled.button`
+  position: fixed;
+  bottom: calc(8vh + 16px); // 바텀 네비게이션 높이(8vh) + 여백
+  right: 16px;
+  width: 7.5rem;
+  height: 7.5rem;
+
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  // 최대 너비 420px 내에서만 표시되도록 설정
+  @media screen and (min-width: 420px) {
+    right: calc((100vw - 420px) / 2 + 16px);
+  }
+`;
+
 export const InfoCardContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "../../styles/home/home.styles";
 import TimeTable from "../../components/home/TimeTable";
 import InfoCard from "../../components/home/InfoCard";
@@ -7,8 +8,14 @@ import InfoCard from "../../components/home/InfoCard";
 import FESTIVALMAINBANNER from "../../assets/home/main-banner.svg";
 import NOTIFYINFO from "../../assets/home/notify-info.svg";
 import SITEINFO from "../../assets/home/site-info.svg";
+import CHATBOT from "../../assets/home/chatbot.svg";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const handleChatbotClick = () => {
+    navigate("/chatbot"); // 채팅봇 페이지로 이동
+  };
   return (
     <S.HomeLayout>
       <S.FestivalMainBanner>
@@ -24,6 +31,12 @@ export default function Home() {
           <InfoCard img={SITEINFO} text="사이트 정보" />
         </S.InfoCardContainer>
       </S.MainContentContainer>
+      <S.ChatbotButton
+        onClick={handleChatbotClick}
+        aria-label="채팅봇으로 이동"
+      >
+        <img src={CHATBOT} alt="chatbot" />
+      </S.ChatbotButton>
     </S.HomeLayout>
   );
 }
