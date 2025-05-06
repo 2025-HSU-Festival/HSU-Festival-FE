@@ -14,9 +14,9 @@ export default function Marker({
 }) {
   return (
     <S.MarkerWrapper
-      top={top}
-      left={left}
-      isSelected={selectedMarker === markerName}
+      $top={top}
+      $left={left}
+      $isSelected={selectedMarker === markerName}
       onClick={() => setSelectedMarker(markerName)}
       title={markerName}
     >

@@ -49,4 +49,14 @@ const foodTruckMarkers = [
   },
 ];
 
-export { activityMarkers };
+// 프로모션 마커
+const promotionMarkers = [
+  {
+    id: 1,
+    name: "프로모션 트럭",
+    left: "60%",
+    top: "70%",
+  },
+];
+
+export { activityMarkers, foodTruckMarkers, promotionMarkers };

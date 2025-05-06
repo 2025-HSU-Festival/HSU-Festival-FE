@@ -1,55 +1,54 @@
 import React, { useEffect, useState } from "react";
 
+// hooks
+import useGet from "../../hooks/useGet";
+
 // styles
 import * as S from "../../styles/booth/booth.styles";
 
 // components
 import BoothItem from "./BoothItem";
 
+// store
+import BoothStore from "../../stores/boothStore";
+
 export default function BoothCategoryView({
   selectedCategory,
   setSelectedCategory,
   selectedMarker,
 }) {
-  const categoryList = ["체험부스", "푸드트럭", "프로모션"];
-  const [boothData, setBoothData] = useState([
-    {
-      id: 1,
-      name: "부스 이름",
-      time: "부스 시간",
-      description: "부스 설명",
-      imageUrl: "https://via.placeholder.com/80",
-    },
-    {
-      id: 2,
-      name: "부스 이름",
-      time: "부스 시간",
-      description: "부스 설명",
-      imageUrl: "https://via.placeholder.com/80",
-    },
-  ]);
+  const categoryTypeMap = {
+    체험부스: "ACTIVITY",
+    푸드트럭: "FOOD",
+    프로모션: "PROMOTION",
+  };
 
+  const apiType = categoryTypeMap[selectedCategory] || "ACTIVITY";
+  //const { data, loading, error } = useGet(`/api/booth?type=${apiType}`);
+
+  // 반드시 함수 내부에서 호출!
+  const boothDataByCategory = BoothStore((state) => state.boothDataByCategory);
+  const setBoothDataByCategory = BoothStore(
+    (state) => state.setBoothDataByCategory
+  );
+
+  // 카테고리에 따른 부스 데이터 설정
   /*   useEffect(() => {
-    const fetchBoothData = async () => {
-      try {
-        const response = await axios.get(
-          `/api/booths?category=${selectedCategory}`
-        );
-        setBoothData(response.data.data);
-      } catch (error) {
-        console.error("부스 데이터를 불러오는데 실패했습니다:", error);
-      }
-    };
-
-    if (selectedCategory) {
-      fetchBoothData();
+    if (data && selectedCategory) {
+      setBoothDataByCategory(
+        selectedCategory,
+        Array.isArray(data.data) ? data.data : []
+      );
     }
-  }, [selectedCategory]); */
+  }, [data, selectedCategory, setBoothDataByCategory]); */
+
+  // zustand에서 데이터 꺼내기
+  const boothData = boothDataByCategory[selectedCategory] || [];
 
   return (
     <S.BoothCategoryViewLayout>
       <S.CategoryListContainer>
-        {categoryList.map((category) => (
+        {Object.keys(categoryTypeMap).map((category) => (
           <S.CategoryItem
             key={category}
             onClick={() => setSelectedCategory(category)}
@@ -61,6 +60,8 @@ export default function BoothCategoryView({
       </S.CategoryListContainer>
 
       <S.BoothListContainer>
+        {/* {loading && <div>로딩 중...</div>}
+        {error && <div>에러 발생!</div>} */}
         {boothData.map((booth) => (
           <BoothItem
             key={booth.id}

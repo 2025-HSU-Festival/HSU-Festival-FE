@@ -21,8 +21,8 @@ export const BoothMapImage = styled.img`
 // Marker.jsx
 export const MarkerWrapper = styled.div`
   position: absolute;
-  top: ${({ top }) => top};
-  left: ${({ left }) => left};
+  top: ${({ $top }) => $top};
+  left: ${({ $left }) => $left};
 `;
 
 export const MarkerImg = styled.img`
