@@ -198,16 +198,18 @@ export const LoadingText = styled.div`
 `;
 
 // InfoCard.jsx
-export const InfoCardBox = styled.div`
+export const InfoCardBox = styled.button`
   width: 100%;
   height: 8vh;
-  background-color: ${colors.bg_gray_light};
+  background-color: ${({ $clicked }) =>
+    $clicked ? colors.primary_base : colors.bg_gray_light};
   display: flex;
   gap: 1vw;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   border: 1px solid #eaeaea;
+  cursor: pointer;
 `;
 
 export const InfoImg = styled.img`
@@ -220,5 +222,5 @@ export const InfoTitle = styled.div`
   font-weight: 600;
   line-height: 140%; /* 22.4px */
   letter-spacing: -0.4px;
-  color: ${colors.text_secondary};
+  color: ${({ $clicked }) => ($clicked ? colors.white : colors.text_secondary)};
 `;

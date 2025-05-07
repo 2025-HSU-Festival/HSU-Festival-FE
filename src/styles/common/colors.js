@@ -13,6 +13,7 @@ const colors = {
   text_secondary: "#5c5c5c", // 보조 텍스트
   text_gray: "#999", // 회색 텍스트
   text_black: "#303030", // 검정 텍스트
+  text_light_gray: "#A4A4A4;",
 
   // Background Colors
   bg_white: "#FFFFFF", // 밝은 배경
