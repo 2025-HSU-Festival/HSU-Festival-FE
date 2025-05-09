@@ -11,11 +11,13 @@ import BoothItem from "./BoothItem";
 
 // store
 import BoothStore from "../../stores/boothStore";
+import Loading from "../../shared/loading/Loading";
 
 export default function BoothCategoryView({
   selectedCategory,
   setSelectedCategory,
   selectedMarker,
+  setSelectedMarker,
 }) {
   const categoryTypeMap = {
     체험부스: "ACTIVITY",
@@ -63,13 +65,14 @@ export default function BoothCategoryView({
       </S.CategoryListContainer>
 
       <S.BoothListContainer>
-        {loading && <div>로딩 중...</div>}
+        {loading && <Loading />}
         {error && <div>에러 발생!</div>}
         {boothData.map((booth) => (
           <BoothItem
             key={booth.id}
             booth={booth}
             selectedMarker={selectedMarker}
+            setSelectedMarker={setSelectedMarker}
           />
         ))}
       </S.BoothListContainer>
