@@ -44,7 +44,7 @@ export const BoothBannerZoomIcon = styled.img`
   right: 20%;
   width: 80%;
   pointer-events: none;
-  animation: ${subtleFloat} 2.5s ease-in-out infinite;
+  animation: ${radiate} 2.5s ease-in-out infinite;
   z-index: 5;
 `;
 
