@@ -8,8 +8,8 @@ export const CreditsLayout = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-top: 3vh;
-  font-size: 16px;
+  margin-top: clamp(2.5vh, 3vh, 4vh);
+  font-size: clamp(16px, 2vw, 18px);
   font-weight: 500;
   line-height: 16px; /* 106.667% */
   letter-spacing: -0.375px;
@@ -51,20 +51,19 @@ export const NameMajor = styled.div`
 `;
 
 export const Name = styled.span`
-  font-size: 14px;
+  font-size: clamp(14px, 1.5vw, 15px);
   font-weight: 700;
 `;
 
 export const Major = styled.span`
   font-size: 12px;
   color: ${colors.text_light_gray};
-
-  margin-left: 6px;
+  margin-left: clamp(4px, 1vw, 8px);
 `;
 
 export const Role = styled.div`
   font-family: Pretendard;
-  font-size: 12px;
+  font-size: clamp(12px, 1.2vw, 14px);
   font-style: normal;
   font-weight: 300;
   line-height: 16px; /* 160% */
@@ -77,5 +76,5 @@ export const Divider = styled.div`
   width: 100%;
   height: 1px;
   background:rgb(209, 215, 226);
-  margin-top: 10px;
+  margin-top: clamp(10px, 1vh, 12px);
 `;
