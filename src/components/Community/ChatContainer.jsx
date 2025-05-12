@@ -26,14 +26,14 @@ export function ChatContainer({ status, setStatus, chattings, setChattings }) {
         }
     };
 
-    useEffect(() => {
-        if (chatWrapRef.current) {
-            chatWrapRef.current.scrollTo({
-                top: chatWrapRef.current.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-    }, [chattings]);
+    // useEffect(() => {
+    //     if (chatWrapRef.current) {
+    //         chatWrapRef.current.scrollTo({
+    //             top: chatWrapRef.current.scrollHeight,
+    //             behavior: 'smooth'
+    //         });
+    //     }
+    // }, [chattings]);
 
     return (
         <MainWrap>
@@ -51,7 +51,8 @@ export function ChatContainer({ status, setStatus, chattings, setChattings }) {
                                 key={index}
                                 type={e.type}
                                 content={e.content}
-                                date={e.date}
+                                date={e.time}
+                                username={e.username}
                             />
                         ))
                     
