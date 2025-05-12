@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import ChatContainer from "../../components/Community/ChatContainer";
-import floatingBtnImg from "../../assets/Community/btn_floating_community.svg";
+import floatingBtnImg from "../../assets/Community/btn_floating_community.png";
 import send from "../../assets/Chatbot/send_icon.svg";
 import pen from "../../assets/Community/Pen.svg";
 import SockJS from "sockjs-client/dist/sockjs.js";

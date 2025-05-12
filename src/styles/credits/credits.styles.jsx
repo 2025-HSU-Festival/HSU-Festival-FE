@@ -22,7 +22,7 @@ export const Title = styled.h2`
 export const List = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 30px;
   margin-left: 10px;
 `;
 
