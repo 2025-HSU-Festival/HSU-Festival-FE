@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { StatusContainer } from "../../entities/Chatbot/StatusContainer";
-import { ChatContainer } from "../../entities/Chatbot/ChatContainer";
+import { StatusContainer } from "../../components/Chatbot/StatusContainer";
+import { ChatContainer } from "../../components/Chatbot/ChatContainer";
 
 export function Chatbot() {
 
