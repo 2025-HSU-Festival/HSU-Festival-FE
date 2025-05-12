@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "../../styles/common/colors";
+import { keyframes } from "styled-components";
 
 export const HomeLayout = styled.div`
   width: 100%;
@@ -43,6 +44,15 @@ export const MainContentContainer = styled.div`
   `}
 `;
 
+
+// 위아래로 떠다니는 애니메이션 정의
+const float = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+`;
+
+
 export const ChatbotButton = styled.button`
   position: fixed;
   bottom: calc(8vh + 16px); // 바텀 네비게이션 높이(8vh) + 여백
@@ -60,6 +70,8 @@ export const ChatbotButton = styled.button`
   &:hover {
     transform: scale(1.1);
   }
+
+  animation: ${float} 2.5s ease-in-out infinite;
 
   img {
     width: 100%;
@@ -105,8 +117,11 @@ export const DateSelector = styled.div`
   background: ${colors.white};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
 `;
+
 
 export const DateButton = styled.button`
   flex: 1;
@@ -304,13 +319,25 @@ export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
   z-index: 999;
+
+  animation: fadeInOverlay 0.2s ease-out forwards;
+
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
+
 
 export const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.96);
   width: 85%;
   max-width: 420px;
   background: ${colors.white};
@@ -318,7 +345,21 @@ export const ModalContainer = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   z-index: 1000;
+
+  animation: fadeInModal 0.25s ease-out forwards;
+
+  @keyframes fadeInModal {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
 `;
+
 
 export const ModalContent = styled.div`
   padding: 24px 20px 20px;
@@ -381,11 +422,16 @@ export const CloseButton = styled.button`
   font-size: 22px;
   color: ${colors.gray};
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.2s ease, color 0.2s ease;
 
   &:hover {
     color: ${colors.primary_base};
-    transform: scale(1.1);
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 `;
+
 
