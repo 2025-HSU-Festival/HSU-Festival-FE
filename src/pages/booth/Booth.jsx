@@ -3,7 +3,9 @@ import * as S from "../../styles/booth/booth.styles";
 import * as H from "../../styles/home/home.styles";
 
 // images
-
+import BoothBannerImg from "../../assets/booth/booth-banner.png";
+import BoothBannerImgZoom from "../../assets/booth/zoom.png";
+import BoothMap from "../../components/booth/BoothMap";
 import BoothCategoryView from "../../components/booth/BoothCategoryView";
 
 export default function Booth() {
