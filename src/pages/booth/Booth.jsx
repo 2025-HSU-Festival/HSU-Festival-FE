@@ -4,7 +4,10 @@ import * as H from "../../styles/home/home.styles";
 
 // images
 import BoothBannerImg from "../../assets/booth/booth-banner.png";
+<<<<<<< HEAD
 import BoothBannerImgZoom from "../../assets/booth/zoom.png";
+=======
+>>>>>>> 577f300de8110220f3c79b91ddb341b44dd9f888
 import BoothMap from "../../components/booth/BoothMap";
 import BoothCategoryView from "../../components/booth/BoothCategoryView";
 
