@@ -264,7 +264,7 @@ export const ModalContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 50%;
+  height: 55%;
   background: ${colors.white};
 `;
 
@@ -291,6 +291,7 @@ export const ModalTime = styled.div`
 `;
 
 export const ModalP2 = styled.p`
+  white-space: pre-line;
   font-size: 16px;
   font-weight: 600;
   line-height: 140%; /* 22.4px */

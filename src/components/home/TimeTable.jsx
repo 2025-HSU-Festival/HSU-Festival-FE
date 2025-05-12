@@ -5,6 +5,7 @@ import * as S from "../../styles/home/home.styles";
 import Modal from "./Modal";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import useGet from "../../hooks/useGet";
 
 // Import Swiper styles
 import "swiper/css";
