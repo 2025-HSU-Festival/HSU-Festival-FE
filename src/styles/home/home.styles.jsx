@@ -2,26 +2,43 @@ import styled from "styled-components";
 import colors from "../../styles/common/colors";
 import { keyframes } from "styled-components";
 
+// 깜빡이는 애니메이션 (보였다 안 보였다)
+const sparkle = keyframes`
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+`;
+
+
 export const HomeLayout = styled.div`
   width: 100%;
+  position: relative; // 상대 위치 기준점
 `;
 
 export const FestivalMainBanner = styled.div`
   width: 100%;
   height: auto;
+  position: relative; // sparkles가 이 기준으로 겹쳐짐
 `;
 
 export const FestivalMainBannerImage = styled.img`
   width: 100%;
   max-width: 100%;
   height: 100%;
-
   object-fit: cover;
   display: block;
 
   @media (max-width: 390px) {
     height: calc(229px * (100vw / 390));
   }
+`;
+
+export const FestivalMainBannerSparkles = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  pointer-events: none; // 클릭 방해하지 않게
+  animation: ${sparkle} 3s infinite ease-in-out;
 `;
 
 export const MainContentContainer = styled.div`
