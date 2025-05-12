@@ -206,7 +206,9 @@ const FloatingBtnWrap = styled.div`
   z-index: 101;
 `;
 
-const FloatingBtn = styled.img`cursor: pointer;`;
+const FloatingBtn = styled.img`
+  width: 62px;
+  cursor: pointer;`;
 
 const DimOverlay = styled.div`
   position: fixed;

@@ -73,11 +73,12 @@ export const ChatbotButton = styled.button`
   }
 `;
 
+// 공지확인하러가기, 사이트정보 포함
 export const InfoCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 2.7vh;
+  margin-top: 2.5vh;
 `;
 
 // TimeTable.jsx
@@ -94,11 +95,12 @@ export const TimeTableLayout = styled.div`
   align-items: center;
 `;
 
+// 요일 바
 export const DateSelector = styled.div`
-  width: 57%;
+  width: 70%;
   height: 42px;
   padding: 4px;
-  border-radius: 38px;
+  border-radius: 34px;
   border: 1px solid #ececec;
   background: ${colors.white};
   display: flex;
@@ -140,9 +142,12 @@ export const DayText = styled.p`
   font-weight: 400;
 `;
 
+// 타임테이블 컨테이너
 export const ScheduleContainer = styled.div`
   width: 100%;
   height: 22vh;
+  border-radius: 10px;
+
   background-color: ${colors.bg_gray_light};
   display: flex;
   align-items: center;
@@ -155,8 +160,9 @@ export const ScheduleContainer = styled.div`
 
   .swiper-slide {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 24px;
   }
 
   .swiper-pagination-bullet-active {
@@ -164,6 +170,7 @@ export const ScheduleContainer = styled.div`
   }
 `;
 
+// 타임테이블 안에 요소들
 export const ScheduleItem = styled.div`
   width: 100%;
   height: 100%;
@@ -172,21 +179,48 @@ export const ScheduleItem = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; // 위에서부터 시작
+  min-height: 18vh; // 항목 간 높이 통일
   align-items: center;
-  gap: 0.8vh;
+  gap: 0.9vh;
+  
+`;
+
+// 타임테이블 상세보기 아이콘
+export const IconHint = styled.div`
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 22px;
+  height: 22px;
+
+  img {
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none; // 아이콘 자체는 클릭 방해 안 하게
+  }
 `;
 
 export const ScheduleStatus = styled.div`
-  display: inline-flex;
-  padding: 4px 12px;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border: 1px solid #ccc;
   border-radius: 50%;
-  font-size: 14px;
-  font-weight: 500;
-  width: 82px;
-  height: 82px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  &:active {
+    background-color: #469AF6;
+    color: white;
+    transform: scale(0.96);
+  }
 
   ${({ $status }) => {
     switch ($status) {
@@ -242,6 +276,7 @@ export const InfoCardBox = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
   background-color: ${({ $clicked }) =>
     $clicked ? colors.primary_base : colors.bg_gray_light};
 `;

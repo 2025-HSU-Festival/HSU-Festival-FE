@@ -28,7 +28,7 @@ export const useScheduleStore = create((set) => ({
         id: 2,
         time: "16:00",
         endTime: "19:00",
-        title: "제 47회 낙산가요제",
+        title: "낙산가요제",
         content:
           "🎧 [참가자]\n" +
           "블랙홀(그라찌에)\n" +
