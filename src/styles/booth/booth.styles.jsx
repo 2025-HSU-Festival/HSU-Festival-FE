@@ -29,8 +29,8 @@ export const MarkerWrapper = styled.div`
 `;
 
 export const MarkerImg = styled.img`
-  width: 3.2rem;
-  height: 3.2em;
+  width: 25px;
+  height: 25px;
 `;
 
 export const MarkerText = styled.div`
@@ -38,7 +38,7 @@ export const MarkerText = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.3rem;
+  font-size: 8px;
   font-weight: 800;
   font-family: Pretendard;
   color: ${colors.white};
@@ -56,6 +56,9 @@ export const BoothCategoryViewLayout = styled.div`
   flex: 1;
   overflow: hidden;
   padding-bottom: 20px;
+  height: calc(
+    100vh - 244px - 8vh
+  ); // 지도 높이(244px)와 하단 네비게이션(8vh) 제외
 `;
 
 export const CategoryListContainer = styled.div`
@@ -96,6 +99,7 @@ export const BoothListContainer = styled.div`
   overflow-y: auto;
   flex: 1;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 8vh; // 하단 네비게이션 바 높이만큼 패딩 추가
 `;
 
 export const BoothItem = styled.div`
