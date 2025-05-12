@@ -145,4 +145,5 @@ export const DetailContent = styled.div`
   font-size: 15px;
   line-height: 1.7;
   margin-bottom: 40px;
+  white-space: pre-line; // ← 이게 핵심!
 `;
