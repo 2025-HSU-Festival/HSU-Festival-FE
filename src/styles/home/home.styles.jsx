@@ -14,6 +14,7 @@ export const FestivalMainBannerImage = styled.img`
   width: 100%;
   max-width: 100%;
   height: 100%;
+
   object-fit: cover;
   display: block;
 
@@ -181,12 +182,14 @@ export const ScheduleStatus = styled.div`
 
 export const ScheduleTime = styled.div`
   font-size: 11px;
+
   font-weight: 400;
   color: ${colors.text_primary};
 `;
 
 export const ScheduleTitle = styled.div`
   font-size: 13px;
+
   font-weight: 600;
   color: ${colors.text_primary};
 `;
@@ -201,15 +204,11 @@ export const LoadingText = styled.div`
 export const InfoCardBox = styled.button`
   width: 100%;
   height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${({ $clicked }) =>
     $clicked ? colors.primary_base : colors.bg_gray_light};
-  display: flex;
-  gap: 1vw;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  border: 1px solid #eaeaea;
-  cursor: pointer;
 `;
 
 export const InfoImg = styled.img`

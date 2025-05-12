@@ -16,7 +16,6 @@ export default function Home() {
   const handleChatbotClick = () => {
     navigate("/chatbot"); // 채팅봇 페이지로 이동
   };
-
   return (
     <S.HomeLayout>
       <S.FestivalMainBanner>

@@ -31,6 +31,7 @@ export default function BoothCategoryView({
   useEffect(() => {
     console.log("data", data);
   }, [data]);
+
   // 반드시 함수 내부에서 호출!
   const boothDataByCategory = BoothStore((state) => state.boothDataByCategory);
   const setBoothDataByCategory = BoothStore(
@@ -38,6 +39,7 @@ export default function BoothCategoryView({
   );
 
   // 카테고리에 따른 부스 데이터 설정
+
   useEffect(() => {
     if (data && selectedCategory) {
       setBoothDataByCategory(
@@ -67,6 +69,7 @@ export default function BoothCategoryView({
       <S.BoothListContainer>
         {loading && <Loading />}
         {error && <div>에러 발생!</div>}
+
         {boothData.map((booth) => (
           <BoothItem
             key={booth.id}

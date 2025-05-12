@@ -19,7 +19,9 @@ const colors = {
   bg_white: "#FFFFFF", // 밝은 배경
   bg_gray_light: "#f5f5f5", // 연회색 배경
   bg_gray: "#cccccc",
+
   nav_bg_gray: "#F9F9F9",
+
   bg_purple: "#F7F7FB",
 
   // Border Colors
