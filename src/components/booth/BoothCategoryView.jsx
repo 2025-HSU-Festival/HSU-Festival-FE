@@ -16,10 +16,6 @@ import Loading from "../../shared/loading/Loading";
 // modal
 import Modal from "../../components/booth/BoothModal"; // 범용 모달 불러오기
 
-// modal
-import Modal from "../../components/booth/BoothModal"; // 범용 모달 불러오기
-
-
 export default function BoothCategoryView({
   selectedCategory,
   setSelectedCategory,
@@ -35,13 +31,6 @@ export default function BoothCategoryView({
     setShowModal(true);
   };
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedBooth, setSelectedBooth] = useState(null);
-
-  const handleOpenModal = (booth) => {
-    setSelectedBooth(booth);
-    setShowModal(true);
-  };
 
   const categoryTypeMap = {
     체험부스: "ACTIVITY",
