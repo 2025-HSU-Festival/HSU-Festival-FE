@@ -38,7 +38,8 @@ export default function BoothItem({
       </S.BoothTextCol>
       <S.BoothImageBox onClick={handleImageClick}>
         <S.BoothImage
-          src={booth.imageUrl || "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/a2f5a035-1b85-487d-a3eb-b4c5f0750388.png"}
+          src={booth.imageUrl || 
+            "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/186fb3b2-2756-40d1-8580-ab50299217dd.png"}
           alt={booth.name}
         />
         <S.IconHint>

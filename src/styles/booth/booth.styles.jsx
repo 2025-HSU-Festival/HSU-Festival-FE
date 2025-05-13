@@ -21,16 +21,16 @@ const radiate = keyframes`
 // search icon
 export const IconHint = styled.div`
   position: absolute;
-  bottom: -2px;
-  right: -2px;
+  right: -2px;   // 우측에서 2px
   width: 22px;
+  top: 2px;
   height: 22px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    pointer-events: none;
+    pointer-events: none; // 아이콘 클릭 방해 X
   }
 `;
 
