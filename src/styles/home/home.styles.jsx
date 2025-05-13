@@ -107,7 +107,7 @@ export const InfoCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 2.5vh;
+  margin-top: 2vh;
 `;
 
 // TimeTable.jsx
@@ -120,7 +120,7 @@ export const TimeTableLayout = styled.div`
   max-height: calc(100vh - 8vh - 4vw); */
   display: flex;
   flex-direction: column;
-  gap: 1.6vh;
+  gap: 2.2vh;
   align-items: center;
 `;
 
@@ -177,7 +177,7 @@ export const DayText = styled.p`
 // 타임테이블 컨테이너
 export const ScheduleContainer = styled.div`
   width: 100%;
-  height: 22vh;
+  height: 20vh;
   border-radius: 10px;
 
   background-color: ${colors.bg_gray_light};
@@ -317,7 +317,7 @@ export const InfoImg = styled.img`
   // height: auto;
   height: 26px;
   object-fit: contain; // 이미지 비율 유지
-  margin-right: 8px; // 텍스트와 간격
+  margin-right: 4px; // 텍스트와 간격
 `;
 
 export const InfoTitle = styled.div`
