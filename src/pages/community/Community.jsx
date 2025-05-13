@@ -6,6 +6,7 @@ import send from '../../assets/Chatbot/send_icon.svg';
 import pen from '../../assets/Community/Pen.svg';
 import SockJS from 'sockjs-client/dist/sockjs.js';
 import { Client } from '@stomp/stompjs';
+import Loader from '../../shared/LoaderForCommunity/Loader.jsx'
 
 const MAX_LENGTH = 62;
 
@@ -16,6 +17,7 @@ export function Community() {
   const [nickname, setNickname] = useState("익명부기");
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getOrSetUserId = () => {
     const getCookie = (name) => {
@@ -69,6 +71,7 @@ export function Community() {
   };
 
   function connect() {
+    setIsLoading(true)
     const socket = new SockJS(`https://3.34.22.86.nip.io/ws/community?user_id=${userId}`);
     const client = new Client({
       webSocketFactory: () => socket,
@@ -78,6 +81,7 @@ export function Community() {
     clientRef.current = client;
 
     client.onConnect = () => {
+      setIsLoading(false)
       console.log("✅ WebSocket 연결됨");
 
       client.subscribe("/sub/chat/public", message => {
@@ -101,7 +105,7 @@ export function Community() {
         .then(res => res.json())
         .then(data => {
           console.log(data);
-          const reversed = data.reverse().map(msg => ({ type: msg.senderId === userId ? 0 : 1, content: msg.content, username: msg.username, time: msg.time}));
+          const reversed = data.reverse().map(msg => ({ type: msg.senderId === userId ? 0 : 1, content: msg.content, username: msg.username, time: msg.time }));
           setChattings(reversed);
         });
     };
@@ -119,46 +123,58 @@ export function Community() {
 
   return (
     <MainLayout>
-      <ChatContainer chattings={chattings} setChattings={setChattings} />
-      {isClicked && (
+      {isLoading ? (
+        <LoadingWrap>
+          <LoadingAnime>
+            <Loader />
+          </LoadingAnime>
+          <LoadingText>데이터를 불러오고 있어요!</LoadingText>
+        </LoadingWrap>
+      ) : (
         <>
-          <DimOverlay onClick={handleFloatingBtnClick} />
-          <BubbleCenterWrap>
-            <ChatBubbleWrap>
-              <TextInput
-                value={text}
-                onChange={e => setText(e.target.value)}
-                placeholder="메시지를 입력하세요..."
-                maxLength={150}
-                onKeyDown={handleInputKeyDown}
-              />
-              <Wrap>
-                <NickNameWrap>
-                  <ImageWrap><Image src={pen} alt="pen" /></ImageWrap>
-                  {isEditing ? (
-                    <NickNameInput
-                      value={nickname}
-                      autoFocus
-                      onChange={handleChangeNickname}
-                      onBlur={handleBlur}
-                      onKeyDown={handleInputKeyDown}
-                    />
-                  ) : (
-                    <NickNameText onClick={handleStartEdit}>{nickname}</NickNameText>
-                  )}
-                </NickNameWrap>
-                <SendImageWrap onClick={handleSend}>
-                  <SendImage src={send} alt="send" />
-                </SendImageWrap>
-              </Wrap>
-            </ChatBubbleWrap>
-            {isOver && <WarningMsg>최대 글자수를 초과하였습니다</WarningMsg>}
-          </BubbleCenterWrap>
+          <ChatContainer chattings={chattings} setChattings={setChattings} />
+          {isClicked && (
+            <>
+              <DimOverlay onClick={handleFloatingBtnClick} />
+              <BubbleCenterWrap>
+                <ChatBubbleWrap>
+                  <TextInput
+                    value={text}
+                    onChange={e => setText(e.target.value)}
+                    placeholder="메시지를 입력하세요..."
+                    maxLength={150}
+                    onKeyDown={handleInputKeyDown}
+                  />
+                  <Wrap>
+                    <NickNameWrap>
+                      <ImageWrap><Image src={pen} alt="pen" /></ImageWrap>
+                      {isEditing ? (
+                        <NickNameInput
+                          value={nickname}
+                          autoFocus
+                          onChange={handleChangeNickname}
+                          onBlur={handleBlur}
+                          onKeyDown={handleInputKeyDown}
+                        />
+                      ) : (
+                        <NickNameText onClick={handleStartEdit}>{nickname}</NickNameText>
+                      )}
+                    </NickNameWrap>
+                    <SendImageWrap onClick={handleSend}>
+                      <SendImage src={send} alt="send" />
+                    </SendImageWrap>
+                  </Wrap>
+                </ChatBubbleWrap>
+                {isOver && <WarningMsg>최대 글자수를 초과하였습니다</WarningMsg>}
+              </BubbleCenterWrap>
+            </>
+          )}
+          <FloatingBtnWrap>
+            <FloatingBtn src={floatingBtnImg} alt="floating button" onClick={handleFloatingBtnClick} />
+          </FloatingBtnWrap>
         </>
       )}
-      <FloatingBtnWrap>
-        <FloatingBtn src={floatingBtnImg} alt="floating button" onClick={handleFloatingBtnClick} />
-      </FloatingBtnWrap>
+
     </MainLayout>
   );
 }
@@ -168,6 +184,24 @@ export default Community;
 
 
 const MainLayout = styled.div`position: relative;`;
+
+const LoadingWrap = styled.div`
+width: 100vw;
+height: 100vh;
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px;
+`
+
+const LoadingAnime = styled.div`
+
+`
+const LoadingText = styled.div`
+font-weight: 500;
+font-size: 24px;
+`
 
 const FloatingBtnWrap = styled.div`
   position: fixed;
