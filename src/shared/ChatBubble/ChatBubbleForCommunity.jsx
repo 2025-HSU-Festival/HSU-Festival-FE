@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import bugiImg from '../../assets/Community/bugi_profile1.png'
 
+import bugiImg from '../../assets/Community/bugi_profile1.png'
+import Loader from "../Loader/Loader.jsx";
 
 export function ChatBubbleForCommunity({ type, content, date, username, }) {
 
@@ -15,38 +16,29 @@ export function ChatBubbleForCommunity({ type, content, date, username, }) {
   }
 
   return (
-    <MainWrap type={type}>
-      {type === 1 ? (
-        <>
-          <BugiImgWrap><BugiImg src={bugiImg} /></BugiImgWrap>
-          <Bubble type={type}>
-            <Content>
-              {content}
-            </Content>
-            <ChatInfo>
-
-              <UserName>
-                {username}
-              </UserName>
-
-              <Time>
-                {formatTime(date)}
-              </Time>
-
-            </ChatInfo>
-
-
-          </Bubble>
-        </>
-      ) : (
-        <>
-          <Date>{formatTime(date)}</Date>
-          <Bubble type={type}>{content}</Bubble>
-        </>
-      )}
-    </MainWrap>
-  );
-}
+      <MainWrap type={type}>
+        {type === 1 ? (
+          // 부기 메시지 렌더링
+          <>
+            <BugiImgWrap><BugiImg src={bugiImg} /></BugiImgWrap>
+            <Bubble type={type}>
+              <Content>{content}</Content>
+              <ChatInfo>
+                <UserName>{username}</UserName>
+                <Time>{formatTime(date)}</Time>
+              </ChatInfo>
+            </Bubble>
+          </>
+        ): (
+          // type 0, 사용자 메시지
+          <>
+            <Date>{formatTime(date)}</Date>
+            <Bubble type={type}>{content}</Bubble>
+          </>
+        )}
+      </MainWrap>
+  )};
+    
 
 export default ChatBubbleForCommunity;
 
