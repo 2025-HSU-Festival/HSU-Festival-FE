@@ -14,7 +14,7 @@ const radiate = keyframes`
   }
   100% {
     transform: scale(0.9);
-    opacity: 0.6;
+    opacity: 0.7;
   }
 `;
 
@@ -39,7 +39,6 @@ export const FestivalBoothBanner = styled.div`
   width: 100%;
   height: auto;
   position: relative; // glow가 이 기준으로 겹쳐짐
-  
 `;
 
 export const FestivalBoothBannerImage = styled.img`
@@ -138,15 +137,17 @@ export const CategoryListContainer = styled.div`
 `;
 
 export const CategoryItem = styled.div`
-  flex: 1; 
+  flex: 1;
   max-width: 27%;
   height: 41px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
-  border: 1px solid ${({ selected }) => (selected ? "transparent" : colors.border_gray)};
-  background: ${({ selected }) => (selected ? colors.primary_base : colors.white)};
+  border: 1px solid
+    ${({ selected }) => (selected ? "transparent" : colors.border_gray)};
+  background: ${({ selected }) =>
+    selected ? colors.primary_base : colors.white};
   color: ${({ selected }) => (selected ? colors.white : colors.text_gray)};
   font-size: 1.8rem;
   font-weight: 500;
@@ -154,7 +155,6 @@ export const CategoryItem = styled.div`
   white-space: nowrap; // 줄바꿈 방지
   text-align: center;
 `;
-
 
 export const BoothListContainer = styled.div`
   width: 100%;
@@ -230,10 +230,14 @@ export const BoothDescription = styled.p`
   font-weight: 400;
   color: ${colors.text_gray};
   margin: 0;
+  // 줄바꿈 방지(길어지면 ...표시)
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 `;
 
 export const BoothImageBox = styled.div`
-  position: relative; // 아이콘 위치 기준
   width: 80px;
   height: 80px;
   border-radius: 12px;

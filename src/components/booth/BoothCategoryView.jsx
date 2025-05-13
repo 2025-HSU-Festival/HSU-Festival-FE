@@ -16,13 +16,25 @@ import Loading from "../../shared/loading/Loading";
 // modal
 import Modal from "../../components/booth/BoothModal"; // 범용 모달 불러오기
 
+// modal
+import Modal from "../../components/booth/BoothModal"; // 범용 모달 불러오기
+
 
 export default function BoothCategoryView({
   selectedCategory,
   setSelectedCategory,
   selectedMarker,
   setSelectedMarker,
+  showModal,
+  setShowModal,
+  selectedBooth,
+  setSelectedBooth,
 }) {
+  const handleOpenModal = (booth) => {
+    setSelectedBooth(booth);
+    setShowModal(true);
+  };
+
   const [showModal, setShowModal] = useState(false);
   const [selectedBooth, setSelectedBooth] = useState(null);
 
