@@ -5,10 +5,11 @@ import TimeTable from "../../components/home/TimeTable";
 import InfoCard from "../../components/home/InfoCard";
 
 // images
-import FESTIVALMAINBANNER from "../../assets/home/main-banner.svg";
-import NOTIFYINFO from "../../assets/home/notify-info.svg";
-import SITEINFO from "../../assets/home/site-info.svg";
-import CHATBOT from "../../assets/home/chatbot.svg";
+import FESTIVALMAINBANNER from "../../assets/home/main-banner.png";
+import FESTIVALMAINBANNERSPARKLES from "../../assets/home/sparkles.png";
+import NOTIFYINFO from "../../assets/home/notify-info.png";
+import SITEINFO from "../../assets/home/site-info.png";
+import CHATBOT from "../../assets/home/chatbot.png";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -23,6 +24,10 @@ export default function Home() {
           src={FESTIVALMAINBANNER}
           alt="festivalMainBanner"
         />
+        <S.FestivalMainBannerSparkles
+          src={FESTIVALMAINBANNERSPARKLES}
+          alt="sparkles"
+        />
       </S.FestivalMainBanner>
       <S.MainContentContainer>
         <TimeTable />
@@ -34,7 +39,7 @@ export default function Home() {
           />
           <InfoCard
             img={SITEINFO}
-            text="만든이들 정보"
+            text="사이트 정보"
             onClick={() => navigate("/credits")}
           />
         </S.InfoCardContainer>

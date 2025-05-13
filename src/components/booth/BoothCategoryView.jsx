@@ -13,12 +13,24 @@ import BoothItem from "./BoothItem";
 import BoothStore from "../../stores/boothStore";
 import Loading from "../../shared/loading/Loading";
 
+// modal
+import Modal from "../../components/booth/BoothModal"; // 범용 모달 불러오기
+
+
 export default function BoothCategoryView({
   selectedCategory,
   setSelectedCategory,
   selectedMarker,
   setSelectedMarker,
 }) {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedBooth, setSelectedBooth] = useState(null);
+
+  const handleOpenModal = (booth) => {
+    setSelectedBooth(booth);
+    setShowModal(true);
+  };
+
   const categoryTypeMap = {
     체험부스: "ACTIVITY",
     푸드트럭: "FOOD",
@@ -39,7 +51,6 @@ export default function BoothCategoryView({
   );
 
   // 카테고리에 따른 부스 데이터 설정
-
   useEffect(() => {
     if (data && selectedCategory) {
       setBoothDataByCategory(
@@ -76,9 +87,20 @@ export default function BoothCategoryView({
             booth={booth}
             selectedMarker={selectedMarker}
             setSelectedMarker={setSelectedMarker}
+            onOpenModal={handleOpenModal} // 여기 넘겨줘야 함
           />
         ))}
       </S.BoothListContainer>
+
+      {/*  모달 조건부 렌더링 */}
+      {showModal && selectedBooth && (
+        <Modal
+          title={`${selectedBooth.boothNum}. ${selectedBooth.name}`}
+          content={selectedBooth.description}
+          imgUrl={selectedBooth.imageUrl}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </S.BoothCategoryViewLayout>
   );
 }
